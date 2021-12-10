@@ -1,110 +1,9 @@
 {% extends 'main/base.html' %}
 
+{% load static %}
+
 {% block styles %}
-<style>
-    :root{
-        --orange: #dd8800;
-        --orangeop: #B26B00;
-        --green: #00FF00;
-        --blue: #23374d;
-        --blue-x: #0085FF;
-        --light-blue: #85c3FF;
-        --white: #eee;
-        --white-x: #dcdcdc;
-        --black: rgb(0, 0, 0);
-        --maxwidth: 1100px;
-    } 
-
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        font-family: sans-serif;
-        font-size: 14px;
-        text-transform: uppercase;
-        color: #777;
-    }
-
-    .lineasdenegocio {
-        max-width: 1100px;
-        box-sizing: border-box;
-        margin: auto;
-        position: relative;
-        color: #888;
-        padding: 28px 5%;
-        font-size: 28px;
-        letter-spacing: -3px;
-        z-index: -40;
-    }
-
-    .btn-whatsapp{
-        display:block;
-        width:70px;
-        height:70px;
-        color: var(--blue);
-        position: fixed;
-        right:30px;
-        bottom:20px;
-        border-radius:50%;
-        line-height:80px;
-        text-align:center;
-        z-index:999;
-    }
-
-    .btn-whatsapp a {
-        width: 100%;
-        height: 100%;
-    }
-
-    .flex-container {
-        margin: auto;
-        display: flex;
-        flex-flow: wrap;
-        max-width: var(--maxwidth);
-        box-sizing: border-box;
-    }
-
-    .flex-container a {
-        flex-grow: 1;
-    }
-
-    .contenedorf {
-        position: relative;
-        text-align: center;
-    }
-
-    .flex-container a img{
-        width: 100%;
-        height: 100%;
-        vertical-align: middle;
-        z-index: -40;
-    }
-
-    .texto-encima { 
-        box-sizing: border-box;
-        position: absolute;
-        top: 86%;
-        left: 2%;
-        color: #fff;
-        padding: 8px;
-        width: 180px;
-        font-size: 18px;
-        font-family: sans-serif;
-        font-weight: 600;
-        text-align: left;
-        z-index: 20;
-    }
-
-    .naranja {
-        background: var(--orange);
-    }
-
-    .verde {
-        background: #228;
-    }
-</style>
+    <link rel="stylesheet"  href="{% static 'css/home.css' %}">    
 {% endblock %}
 
 {% block title %}
@@ -231,34 +130,6 @@
 
 {% block js %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
-<script>
-    // gsap animations
-    var animation = gsap.timeline();
-    animation
-        .from('.lineasdenegocio', { opacity: 0, duration: 1, ease: "back.out(1.7)", x: -100 }, "+=0.4")
-        .from('.btn-whatsapp', { duration: 2.4, ease: "bounce.out", y: -900})
-
-    // flex container
-    let container = document.getElementById("flexcontainer");
-    let childNum = container.childElementCount;
-
-    let elements = container.children;
-    let width = elements.item(0).clientWidth;
-
-    for (let i = 4; i < childNum; i++){
-        elements.item(i).style.maxWidth = width + 'px';
-    }
-
-    addEventListener("resize", ()=>{
-
-        elements = container.children;
-        width = elements.item(0).clientWidth;
-
-        for (let i = 4; i < childNum; i++){
-            elements.item(i).style.maxWidth = width + 'px';
-        }
-
-    })
-</script>
+<script type="text/javascript" src="{% static 'js/home.js' %}"></script>
 
 {% endblock %}
